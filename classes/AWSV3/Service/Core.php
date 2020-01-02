@@ -1,14 +1,11 @@
 <?php defined('SYSPATH') OR die('No direct script access.');
 
-require_once AWS_MOD_PATH . DIRECTORY_SEPARATOR . 'vendor'
-    . DIRECTORY_SEPARATOR . 'aws'
-    . DIRECTORY_SEPARATOR . 'build'
-    . DIRECTORY_SEPARATOR . 'aws-autoloader.php';
+require_once AWS_AUTOLOAD;
 
-class AWS_Service_Core {
+class AWSV3_Service_Core {
     public static $_resource = null;
     protected static $_instances = array();
-    
+
     /**
      * Create instance of an AWS resource
      */
@@ -19,15 +16,15 @@ class AWS_Service_Core {
             $class = get_called_class();
             $type = $class::$_resource;
         }
-        
+
         if (empty(self::$_instances[$type]))
         {
-            self::$_instances[$type] = AWS::factory()->get($type);
+            self::$_instances[$type] = AWS::factory($type);
         }
-        
+
         return self::$_instances[$type];
     }
-    
+
     /**
      * Creates alias to all native methods of the resource.
      *
@@ -39,7 +36,7 @@ class AWS_Service_Core {
     {
         $class = get_called_class();
         $obj = $class::instance();
-        
+
         $method = new ReflectionMethod($obj, $method);
         return $method->invokeArgs($obj, $args);
     }
