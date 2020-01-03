@@ -2,7 +2,7 @@
 
 require_once AWSV3_AUTOLOAD;
 
-class AWSV3_Core {
+class AWS3_Core {
     /**
      * Default configuration path.
      */

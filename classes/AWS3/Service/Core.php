@@ -2,7 +2,7 @@
 
 require_once AWSV3_AUTOLOAD;
 
-class AWSV3_Service_Core {
+class AWS3_Service_Core {
     public static $_resource = null;
     protected static $_instances = array();
 
