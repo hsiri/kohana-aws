@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') OR die('No direct script access.');
 
-require_once AWS_AUTOLOAD;
+require_once AWSV3_AUTOLOAD;
 
 class AWSV3_Service_Core {
     public static $_resource = null;
